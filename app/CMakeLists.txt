@@ -19,7 +19,7 @@ set_target_properties(
     POSITION_INDEPENDENT_CODE ON
     CXX_STANDARD 20
     CXX_STANDARD_REQUIRED TRUE
-    FOLDER "---PROJECT FOLDER"
+    FOLDER "ABC_PROJECT FOLDER"
 )
 
 target_link_libraries(
