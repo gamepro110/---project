@@ -6,11 +6,20 @@ file(
     "src/*.h"
 )
 
-add_executable(
-    App
-    WIN32
-    ${App_SRC}
-)
+if(WIN32 AND ${CMAKE_BUILD_TYPE} STREQUAL "MinSizeRel")
+    # windows dist specification
+    add_executable(
+        App
+        WIN32
+        ${App_SRC}
+    )
+else()
+    add_executable(
+        App
+        ${App_SRC}
+    )
+endif()
+
 
 set_target_properties(
     App

@@ -12,6 +12,23 @@ add_library(
     ${CORELIB_SRC}
 )
 
+target_link_libraries(
+    CoreLib
+    PUBLIC spdlog
+    PUBLIC glfw
+    PUBLIC IMGUI_LIB
+)
+
+target_include_directories(
+    CoreLib
+    PUBLIC
+    "${vendorPath}/dear-imgui/"
+    "${vendorPath}/GLFW/include"
+    "${vendorPath}/spdlog/include"
+    
+    "${Vulkan_INCLUDE_DIRS}"
+)
+
 set_target_properties(
     CoreLib
     PROPERTIES
