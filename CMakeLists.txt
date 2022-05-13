@@ -41,9 +41,13 @@ elseif(UNIX)
 endif()
 # project wide defines
 
+set(CMAKE_CXX_STANDARD 20)
 set(vendorPath "${PROJECT_SOURCE_DIR}/vendor")
 
 add_subdirectory(vendor)
 add_subdirectory(core)
 add_subdirectory(app)
+#add_subdirectory(docs)
+
+enable_testing()
 add_subdirectory(tests)

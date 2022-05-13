@@ -1,9 +1,25 @@
 # tests config
+find_package(Catch2 REQUIRED)
 
-enable_testing()
+include(AddTests.cmake)
 
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
-    add_subdirectory(tests)
-endif()
+add_library(catch_main OBJECT catch/catch_main.cpp)
+target_link_libraries(
+    catch_main
+    PUBLIC
+    Catch2::Catch2
+    Catch2::Catch2WithMain
+)
+set_target_properties(
+    catch_main
+    PROPERTIES
+    POSITION_INDEPENDENT_CODE ON
+    FOLDER "unittests/"
+)
 
-# https://cliutils.gitlab.io/modern-cmake/chapters/testing/googletest.html
+add_custom_target(
+    CompileTests
+    DEPENDS ALL_BUILD #RUN_TESTS
+)
+
+AddTests("Example" "src/example/example.cpp" "")
