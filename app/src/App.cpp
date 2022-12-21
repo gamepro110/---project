@@ -1,29 +1,22 @@
-#include "Application.h"
-#include "Log.h"
-#include "EntryPoint.h"
+#include "ExampleLayer.h"
+#include "testLayer.h"
 
-class ExampleLayer : public ABC_Name::Layer {
-public:
-	void OnAttach() override {
-	}
+#include "corelib/Application.h"
+#include "corelib/Log.h"
+#include "corelib/EntryPoint.h"
 
+#if defined(ABC_DEBUG)
+class DemoLayer : public ABC_Name::Layer {
+public:	
+	void OnAttach() override {}
 	void OnUIRender() override {
-		ImGui::Begin("Example");
-		
-		if (ImGui::CollapsingHeader("foldout example", collapsingHeader1)) {
-			ImGui::Text("what did u expect to find...?");
-		}
-
-		ImGui::Text("Example text");
-		ImGui::End();
+		ImGui::ShowDemoWindow(&showDemo);
 	}
-
-	void OnDetach() override {
-	}
-
+	void OnDetach() override {}
 private:
-	bool collapsingHeader1{ false };
+	bool showDemo = true;
 };
+#endif
 
 ABC_Name::Application* ABC_Name::CreateApplication(int argc, char** argv) {
 	ABC_Name::AppSpecs spec;
@@ -33,6 +26,11 @@ ABC_Name::Application* ABC_Name::CreateApplication(int argc, char** argv) {
 	ABC_Name::Application* app = new ABC_Name::Application(spec);
 	
 	app->PushLayer<ExampleLayer>();
+	app->PushLayer<TestLayer>();
+	
+	#if defined(ABC_DEBUG)
+	app->PushLayer<DemoLayer>();
+	#endif
 	
 	app->SetMenubarCallback(
 		[app]() {
