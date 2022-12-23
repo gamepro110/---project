@@ -10,21 +10,21 @@ function(AddTests TestName sourceFile libLinkTargets)
 	set(_runtime "${fullName}_Tests")
 
 	add_executable(${_runtime} ${sourceFile})
-	
+
 	set_target_properties(
 		${_runtime}
 		PROPERTIES
 		POSITION_INDEPENDENT_CODE ON
 		FOLDER "Tests/"
 	)
-	
+
 	target_include_directories(
 		${_runtime}
 		PUBLIC
 		"${PROJECT_SOURCE_DIR}/tests/catch/"
 		"${PROJECT_SOURCE_DIR}"
 	)
-	
+
 	target_link_libraries(
 		${_runtime}
 		PUBLIC

@@ -25,7 +25,7 @@ target_include_directories(
     "${vendorPath}/dear-imgui/"
     "${vendorPath}/GLFW/include"
     "${vendorPath}/spdlog/include"
-    
+
     "${Vulkan_INCLUDE_DIRS}"
 )
 

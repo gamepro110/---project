@@ -41,6 +41,14 @@ elseif(UNIX)
 endif()
 # project wide defines
 
+add_definitions(
+    -DWall # turn on a pool of warnings
+    -DWerror # see warnings as errors
+    -DWextra # enables flags not enabled by -Wall
+    -DWconversion # shows conversion errors
+    -DWunnused
+)
+
 set(CMAKE_CXX_STANDARD 20)
 set(vendorPath "${PROJECT_SOURCE_DIR}/vendor")
 

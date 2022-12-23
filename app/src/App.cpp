@@ -7,7 +7,7 @@
 
 #if defined(ABC_DEBUG)
 class DemoLayer : public ABC_Name::Layer {
-public:	
+public:
 	void OnAttach() override {}
 	void OnUIRender() override {
 		ImGui::ShowDemoWindow(&showDemo);
@@ -24,14 +24,14 @@ ABC_Name::Application* ABC_Name::CreateApplication(int argc, char** argv) {
 
 	ABC_INFO("Starting App");
 	ABC_Name::Application* app = new ABC_Name::Application(spec);
-	
+
 	app->PushLayer<ExampleLayer>();
 	app->PushLayer<TestLayer>();
-	
+
 	#if defined(ABC_DEBUG)
 	app->PushLayer<DemoLayer>();
 	#endif
-	
+
 	app->SetMenubarCallback(
 		[app]() {
 			if (ImGui::BeginMenu("File")) {
@@ -42,6 +42,6 @@ ABC_Name::Application* ABC_Name::CreateApplication(int argc, char** argv) {
 			}
 		}
 	);
-	
+
 	return app;
 }

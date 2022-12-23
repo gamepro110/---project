@@ -1,2 +1,2 @@
 #!/bin/bash
-cmake --build --preset=linux-gcc-debug
+cmake --build --preset=linux-clang-debug

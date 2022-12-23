@@ -30,7 +30,7 @@ namespace ABC_Name {
 		void SetMenubarCallback(const std::function<void()>& menubarCallback) {
 			m_menubarCallback = menubarCallback;
 		}
-		
+
 		template<typename T>
 		void PushLayer() {
 			static_assert(std::is_base_of<Layer, T>::value, "Pushed type is not subclass of Layer!!");

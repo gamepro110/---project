@@ -1,8 +1,7 @@
 #pragma once
 
 namespace ABC_Name {
-	class Layer
-	{
+	class Layer {
 	public:
 		virtual ~Layer() = default;
 

@@ -8,8 +8,6 @@ void TestLayer::OnAttach() {
     int i1 = std::rand() % 10;
     int i2 = std::rand() % 10;
 
-    std::cout << ">>> i1(" << i1 << ") i2(" << i2 << ")\n";
-    
     for (int i = 0; i < (i1 * i2); i++) {
         list.emplace_back(rand());
     }
@@ -18,11 +16,10 @@ void TestLayer::OnAttach() {
 void TestLayer::OnUIRender() {
     ImGui::Begin("Test list");
     {
-        sprintf(txt, "items in List: %d\n", list.size());
-        ImGui::Text(txt);
-        
+        ImGui::Text("%s", std::string("list.size(" + std::to_string(list.size()) + ")").c_str());
+
         for (const auto& item : list) {
-            ImGui::Text(std::to_string(item).c_str());
+            ImGui::Text("%s", std::to_string(item).c_str());
         }
     }
     ImGui::End();
